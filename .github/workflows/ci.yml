@@ -1,0 +1,24 @@
+name: Node.js CI Demo
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Tải mã nguồn về máy ảo
+      uses: actions/checkout@v4
+
+    - name: Cài đặt Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
+    - name: Cài đặt thư viện phụ thuộc
+      run: npm install
+
+    - name: Chạy Unit Test
+      run: npm test
